@@ -1,3 +1,3 @@
 # Net6MicroServicesWithOcelot-On-Docker
 
-Run with Docker Compose 
+Runnable with Docker Compose 
