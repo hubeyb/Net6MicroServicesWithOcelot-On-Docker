@@ -15,13 +15,20 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KloiaCase.DataAccess", "KloiaCase.DataAccess\KloiaCase.DataAccess.csproj", "{3E5C93B8-5AE6-4B50-8450-DA7859666D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KloiaCase.ApiGateway", "KloiaCase.ApiGateway\KloiaCase.ApiGateway.csproj", "{15437FDB-1204-4829-914F-99347673C399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KloiaCase.ApiGateway", "KloiaCase.ApiGateway\KloiaCase.ApiGateway.csproj", "{15437FDB-1204-4829-914F-99347673C399}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APPDATA", "APPDATA", "{54E60111-7E85-4F90-8FF3-93D810A807F9}"
+	ProjectSection(SolutionItems) = preProject
+		APPDATA\1-create database script.sql = APPDATA\1-create database script.sql
+		APPDATA\2-create tables script.sql = APPDATA\2-create tables script.sql
+		APPDATA\Kloia Case.postman_collection.json = APPDATA\Kloia Case.postman_collection.json
+		APPDATA\NetCoreMicroServicesDB.mdf = APPDATA\NetCoreMicroServicesDB.mdf
+		APPDATA\NetCoreMicroServicesDB_log.ldf = APPDATA\NetCoreMicroServicesDB_log.ldf
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4CE5BBB3-B9CC-42EF-84E4-061A4A6CAB7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KloiaCase.Tests", "Tests\KloiaCase.Tests\KloiaCase.Tests.csproj", "{15BF7A66-9120-48E8-B61D-6CFDAB02BB21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KloiaCase.Tests", "Tests\KloiaCase.Tests\KloiaCase.Tests.csproj", "{15BF7A66-9120-48E8-B61D-6CFDAB02BB21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
