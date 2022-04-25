@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "5ef7efd1-275b-4c40-af58-9cf1524b4de3",
+		"name": "Kloia Case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ApiGateway",
+			"item": [
+				{
+					"name": "ApiGateway",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7000/apigateway/apigateway",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"apigateway",
+								"apigateway"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7000/article-service/article",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"article-service",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7000/review-service/review",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"review-service",
+								"review"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review Service",
+			"item": [
+				{
+					"name": "Review Get OData Select OrderBy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review?$select=Reviewer&orderby=Reviewer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "Reviewer"
+								},
+								{
+									"key": "orderby",
+									"value": "Reviewer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Get OData filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review?$filter=ReviewContent eq 'review content test 2'",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "ReviewContent eq 'review content test 2'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\" : 100,\r\n    \"reviewer\": \"reviewer test 3\",\r\n    \"reviewContent\": \"review content test 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review/1006",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"1006"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"articleId\" : 1,\r\n    \"reviewer\": \"reviewer test 4\",\r\n    \"reviewContent\": \"review content test 4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7002/api/v1/review/1005",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7002",
+							"path": [
+								"api",
+								"v1",
+								"review",
+								"1005"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arcticle Service",
+			"item": [
+				{
+					"name": "Article Get OData filter StarCount lt 10",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article?$filter=StarCount lt 10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "StarCount lt 10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test create 2\",\r\n    \"author\": \"Hubeyb\",\r\n    \"articleContent\": \"test article content 1\",\r\n    \"publishDate\": \"2022-03-05T00:00:00\",\r\n    \"starCount\": 8,\r\n     \"Reviews\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article/1004",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article",
+								"1004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Article Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"test create 2\",\r\n    \"author\": \"Hubeyb\",\r\n    \"articleContent\": \"test article content 2\",\r\n    \"publishDate\": \"2022-04-06T00:00:00\",\r\n    \"starCount\": 10,\r\n    \"Reviews\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7001/api/v1/article/1002",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"v1",
+								"article",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
