@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  data: 
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+      - SA_PASSWORD=@Pass12358!
+      - ACCEPT_EULA=Y
+    ports:
+        - "1433:1433"
+    volumes:
+        - ./APPDATA:/var/opt/mssql/data 
+
+  kloiacase.apigateway:
+    image: ${DOCKER_REGISTRY-}kloiacaseapigateway
+    build:
+      context: .
+      dockerfile: KloiaCase.ApiGateway/Dockerfile
+    ports:
+    - "7000:443"
+
+  kloiacase.articleservice:
+    image: ${DOCKER_REGISTRY-}kloiacasearticleservice
+    build:
+      context: .
+      dockerfile: KloiaCase.ArticleService/Dockerfile
+    ports:
+    - "7001:443"
+
+  kloiacase.reviewservice:
+    image: ${DOCKER_REGISTRY-}kloiacasereviewservice
+    build:
+      context: .
+      dockerfile: KloiaCase.ReviewService/Dockerfile
+    ports:
+    - "7002:443"
+

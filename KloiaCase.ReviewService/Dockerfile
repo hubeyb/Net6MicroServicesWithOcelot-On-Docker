@@ -1,0 +1,23 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["KloiaCase.ReviewService/KloiaCase.ReviewService.csproj", "KloiaCase.ReviewService/"]
+COPY ["KloiaCase.Domain/KloiaCase.Domain.csproj", "KloiaCase.Domain/"]
+RUN dotnet restore "KloiaCase.ReviewService/KloiaCase.ReviewService.csproj"
+COPY . .
+WORKDIR "/src/KloiaCase.ReviewService"
+RUN dotnet build "KloiaCase.ReviewService.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "KloiaCase.ReviewService.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "KloiaCase.ReviewService.dll"]
