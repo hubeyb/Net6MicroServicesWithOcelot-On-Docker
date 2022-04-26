@@ -51,7 +51,6 @@ namespace KloiaCase.DataAccess.Services
             review.ArticleId = updateReview.ArticleId;
             review.Reviewer = updateReview.Reviewer;
             review.ReviewContent = updateReview.ReviewContent;
-            review.Article = updateReview.Article;
 
             await _dBContext.SaveChanges();
 

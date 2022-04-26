@@ -25,7 +25,8 @@ namespace KloiaCase.DataAccess.Services
 
         public ArticleEntity? GetById(int id)
         {
-            return _dBContext.Article.Include(i => i.Reviews).Where(a => a.Id == id).FirstOrDefault();
+            var article = _dBContext.Article.Include(i => i.Reviews).Where(a => a.Id == id).FirstOrDefault();
+            return article;
         }
 
         public async Task<int> Create(ArticleEntity article)

@@ -12,7 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<INetCoreMicroServicesDBContext, NetCoreMicroServicesDBContext>(options=> {
+builder.Services.AddDbContext<INetCoreMicroServicesDBContext, NetCoreMicroServicesDBContext>(options =>
+{
     var connectionStr = builder.Configuration.GetConnectionString("NetCoreMicroServicesDBConnection");
     options.UseSqlServer(connectionStr);
 }, ServiceLifetime.Scoped, ServiceLifetime.Scoped);
@@ -31,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 //app.UseAuthorization();
 

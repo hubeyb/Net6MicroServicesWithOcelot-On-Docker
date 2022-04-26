@@ -16,7 +16,6 @@ namespace KloiaCase.ArticleService.Controllers.V1
 
         private INetCoreMicroServicesDBContext _dBContext;
         private IArticleService _ArticleService;
-        private IReviewService _ReviewService;
 
         public ArticleV1Controller(INetCoreMicroServicesDBContext dBContext, IArticleService articleService)
         {
@@ -72,14 +71,14 @@ namespace KloiaCase.ArticleService.Controllers.V1
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ArticleEntity updateArticle)
         {
-            var reviewId = await _ArticleService.Update(id, updateArticle);
+            var articleId = await _ArticleService.Update(id, updateArticle);
 
             var article = _dBContext.Article.Where(a => a.Id == id).FirstOrDefault();
 
-            if (reviewId == 0)
+            if (articleId == 0)
                 return NotFound();
 
-            return Ok(reviewId);
+            return Ok(articleId);
         }
     }
 }

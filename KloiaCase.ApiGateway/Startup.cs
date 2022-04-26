@@ -34,14 +34,14 @@ namespace KloiaCase.ApiGateway
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "KloiaCase.ApiGateway", Version = "v1" });
             //});
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddMvcOptions(mvcOptions => {
-                mvcOptions.EnableEndpointRouting = false;
-            });
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddMvcOptions(mvcOptions => {
+            //    mvcOptions.EnableEndpointRouting = false;
+            //});
             services.AddOcelot(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -52,9 +52,9 @@ namespace KloiaCase.ApiGateway
             else
                 app.UseHsts();
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
-            app.UseOcelot().Wait();
+            //app.UseHttpsRedirection();
+            //app.UseMvc();
+            await app.UseOcelot();
 
             //app.UseRouting();
 

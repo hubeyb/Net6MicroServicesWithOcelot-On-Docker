@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace KloiaCase.Domain.Entities
 
         public int StarCount { get; set; }
 
-        public virtual ICollection<ReviewEntity>? Reviews { get; set; }
+        [ForeignKey("ArticleId")]
+        public virtual ICollection<ReviewEntity> Reviews { get; set; }
     }
 }

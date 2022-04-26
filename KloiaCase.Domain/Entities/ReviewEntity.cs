@@ -7,7 +7,5 @@
         public string Reviewer { get; set; }
 
         public string ReviewContent { get; set; }
-
-        public virtual ArticleEntity? Article { get; set; }
     }
 }

@@ -11,18 +11,10 @@ namespace KloiaCase.DataAccess
 {
     public class NetCoreMicroServicesDBContext : DBContextBase, INetCoreMicroServicesDBContext
     {
-        public NetCoreMicroServicesDBContext(DbContextOptions options, IConfiguration configuration)
-            : base(options, configuration)
-        {
-        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public NetCoreMicroServicesDBContext(DbContextOptions options)
+            : base(options)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                var connectionStr = Configuration.GetConnectionString("NetCoreMicroServicesDBConnection");
-                optionsBuilder.UseSqlServer(connectionStr);
-            }
         }
 
         public DbSet<ArticleEntity> Article { get; set; }

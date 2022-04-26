@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: KloiaCase.ApiGateway/Dockerfile
     ports:
-    - "7000:443"
+    - "7000:80"
 
   kloiacase.articleservice:
     image: ${DOCKER_REGISTRY-}kloiacasearticleservice
@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: KloiaCase.ArticleService/Dockerfile
     ports:
-    - "7001:443"
+    - "7001:80"
 
   kloiacase.reviewservice:
     image: ${DOCKER_REGISTRY-}kloiacasereviewservice
@@ -34,5 +34,5 @@ services:
       context: .
       dockerfile: KloiaCase.ReviewService/Dockerfile
     ports:
-    - "7002:443"
+    - "7002:80"
 

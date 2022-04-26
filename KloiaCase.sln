@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APPDATA", "APPDATA", "{54E6
 	ProjectSection(SolutionItems) = preProject
 		APPDATA\1-create database script.sql = APPDATA\1-create database script.sql
 		APPDATA\2-create tables script.sql = APPDATA\2-create tables script.sql
+		APPDATA\Docker Local Http Env.postman_environment.json = APPDATA\Docker Local Http Env.postman_environment.json
 		APPDATA\Kloia Case.postman_collection.json = APPDATA\Kloia Case.postman_collection.json
 		APPDATA\NetCoreMicroServicesDB.mdf = APPDATA\NetCoreMicroServicesDB.mdf
 		APPDATA\NetCoreMicroServicesDB_log.ldf = APPDATA\NetCoreMicroServicesDB_log.ldf

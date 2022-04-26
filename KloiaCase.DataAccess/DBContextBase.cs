@@ -5,12 +5,9 @@ namespace KloiaCase.DataAccess
 {
     public abstract class DBContextBase : DbContext
     {
-        protected readonly IConfiguration Configuration;
-
-        public DBContextBase(DbContextOptions options, IConfiguration configuration) 
+        public DBContextBase(DbContextOptions options)
             : base(options)
         {
-            Configuration = configuration;
         }
     }
 }
