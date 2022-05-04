@@ -1,4 +1,5 @@
-﻿using KloiaCase.Domain.Entities;
+﻿using KloiaCase.DataAccess.Models;
+using KloiaCase.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace KloiaCase.DataAccess.Services
 
         Task<int> Create(ArticleEntity article);
 
-        Task<bool> Delete(ArticleEntity article);
+        Task<DeleteResponseServiceModel> Delete(int id);
 
         Task<int> Update(int id, ArticleEntity updateArticle);
     }

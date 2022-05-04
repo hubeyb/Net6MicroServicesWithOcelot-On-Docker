@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using KloiaCase.DataAccess.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using KloiaCase.DataAccess.Models;
 
 namespace KloiaCase.Tests.Controllers.V1
 {
@@ -77,8 +78,8 @@ namespace KloiaCase.Tests.Controllers.V1
             //Assert
             Assert.IsNotNull(createResponse);
 
-            var reviewId = (int)((OkObjectResult)createResponse).Value;
-            Assert.AreEqual(id, reviewId);
+            var reviewCreateResponse = (CreateResponseServiceModel)((OkObjectResult)createResponse).Value;
+            Assert.AreEqual(id, reviewCreateResponse.CreatedEntityId);
         }
 
         [TestMethod]
@@ -190,8 +191,8 @@ namespace KloiaCase.Tests.Controllers.V1
             dBContext.Review.AddRange(reviewList);
             await dBContext.SaveChanges();
 
-            _ReviewService = new ReviewsService(dBContext);
             _ArticleService = new ArticlesService(dBContext);
+            _ReviewService = new ReviewsService(dBContext, _ArticleService);
 
             Controller = CreateController();
         }

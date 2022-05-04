@@ -54,18 +54,12 @@ namespace KloiaCase.ArticleService.Controllers.V1
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var article = _ArticleService.GetById(id);
+            var articleResponse = await _ArticleService.Delete(id);
 
-            if (article == null)
-                return NotFound();
+            if (!articleResponse.OperationSuccess)
+                return ValidationProblem(articleResponse.ValidationdMessage);
 
-            //When deleting an article, the article microservice should check that there should be no reviews under that article
-            if (article.Reviews.Any())
-                return ValidationProblem("This Article has reviews!");
-
-            var deleteReturn = await _ArticleService.Delete(article);
-
-            return Ok(deleteReturn);
+            return Ok(articleResponse.OperationSuccess);
         }
 
         [HttpPut("{id}")]

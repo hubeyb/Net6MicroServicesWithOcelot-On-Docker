@@ -1,4 +1,5 @@
-﻿using KloiaCase.Domain.Entities;
+﻿using KloiaCase.DataAccess.Models;
+using KloiaCase.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,15 +33,37 @@ namespace KloiaCase.DataAccess.Services
         public async Task<int> Create(ArticleEntity article)
         {
             _dBContext.Article.Add(article);
-            await _dBContext.SaveChanges();
+           var articleId =  await _dBContext.SaveChanges();
             return article.Id;
         }
 
-        public async Task<bool> Delete(ArticleEntity article)
+        public async Task<DeleteResponseServiceModel> Delete(int id)
         {
-            _dBContext.Article.Remove(article);
-            await _dBContext.SaveChanges();
-            return true;
+            var article = GetById(id);
+            var response = new DeleteResponseServiceModel();
+
+            if (article == null)
+            {
+                response.ValidationdMessage = "Article Not Found!";
+                response.OperationSuccess = false;
+            }
+            else
+            {
+                //When deleting an article, the article microservice should check that there should be no reviews under that article
+                if (article.Reviews.Any())
+                {
+                    response.ValidationdMessage = "This Article has reviews!";
+                    response.OperationSuccess = false;
+                }
+                else
+                {
+                    _dBContext.Article.Remove(article);
+                    await _dBContext.SaveChanges();
+                    response.OperationSuccess = true;
+                }
+            }
+
+            return response;
         }
 
         public async Task<int> Update(int id, ArticleEntity updateArticle)
