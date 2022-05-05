@@ -51,7 +51,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Article_Create_Should_Return_Article_With_Same_Id()
+        public async Task Article_Create_Should_Return_Article_With_Same_Id()
         {
             //Arrange
             var id = 13;
@@ -73,7 +73,7 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var articleId = _ArticleService.Create(article).Result;
+            var articleId = await _ArticleService.Create(article);
 
             //Assert
             Assert.IsNotNull(articleId);
@@ -81,13 +81,13 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Article_Delete_Should_Return_Has_Reviews_Validation_Error()
+        public async Task Article_Delete_Should_Return_Has_Reviews_Validation_Error()
         {
             //Arrange In MockDependencies()
             var id = 1;
 
             //Act
-            var articleDeleteResponse = _ArticleService.Delete(id).Result;
+            var articleDeleteResponse = await _ArticleService.Delete(id);
 
             //Assert
             Assert.IsNotNull(articleDeleteResponse);
@@ -96,7 +96,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Article_Delete_Should_Return_True()
+        public async Task Article_Delete_Should_Return_True()
         {
             //Arrange
             var id = 15;
@@ -111,8 +111,8 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            _ArticleService.Create(article);
-            var articleDeleteResponse = _ArticleService.Delete(id).Result;
+            await _ArticleService.Create(article);
+            var articleDeleteResponse = await _ArticleService.Delete(id);
 
             //Assert
             Assert.IsNotNull(articleDeleteResponse);
@@ -120,7 +120,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Article_Update_Should_Return_ArticleId_1()
+        public async Task Article_Update_Should_Return_ArticleId_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
@@ -133,7 +133,7 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var updateResponse = _ArticleService.Update(1, article).Result;
+            var updateResponse = await _ArticleService.Update(1, article);
 
             //Assert
             Assert.IsNotNull(updateResponse);

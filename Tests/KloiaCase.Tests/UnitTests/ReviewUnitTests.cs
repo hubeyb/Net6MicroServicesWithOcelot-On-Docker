@@ -16,7 +16,7 @@ using Moq;
 
 namespace KloiaCase.Tests.UnitTests
 {
-    [TestClass] 
+    [TestClass]
     public class ReviewUnitTests : UnitTestsBase
     {
         public IReviewService _ReviewService;
@@ -52,7 +52,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Review_Create_Should_Return_Review_With_Same_Id()
+        public async Task Review_Create_Should_Return_Review_With_Same_Id()
         {
             //Arrange
             var id = 8;
@@ -65,7 +65,7 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var reviewId = _ReviewService.Create(review).Result;
+            var reviewId = await _ReviewService.Create(review);
 
             //Assert
             Assert.IsNotNull(reviewId);
@@ -73,7 +73,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Review_Create_Should_Return_Review_No_Article_With_Provided_ArticleId_Validation_Error()
+        public async Task Review_Create_Should_Return_Review_No_Article_With_Provided_ArticleId_Validation_Error()
         {
             //Arrange
             var id = 8;
@@ -86,7 +86,7 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var createResponse = _ReviewService.Create(review).Result;
+            var createResponse = await _ReviewService.Create(review);
 
             //Assert
             Assert.IsNotNull(createResponse);
@@ -95,7 +95,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Review_Delete_Should_Return_True()
+        public async Task Review_Delete_Should_Return_True()
         {
             //Arrange
             var id = 27;
@@ -108,8 +108,8 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var createResponse = _ReviewService.Create(review).Result;
-            var reviewDeleteResponse = _ReviewService.Delete(review).Result;
+            var createResponse = await _ReviewService.Create(review);
+            var reviewDeleteResponse = await _ReviewService.Delete(review);
 
             //Assert
             Assert.IsNotNull(reviewDeleteResponse);
@@ -118,7 +118,7 @@ namespace KloiaCase.Tests.UnitTests
         }
 
         [TestMethod]
-        public void Review_Update_Should_Return_ReviewId_1()
+        public async Task Review_Update_Should_Return_ReviewId_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
@@ -130,7 +130,7 @@ namespace KloiaCase.Tests.UnitTests
             };
 
             //Act
-            var createResponse = _ReviewService.Update(1, review).Result;
+            var createResponse = await _ReviewService.Update(1, review);
 
             //Assert
             Assert.IsNotNull(createResponse);

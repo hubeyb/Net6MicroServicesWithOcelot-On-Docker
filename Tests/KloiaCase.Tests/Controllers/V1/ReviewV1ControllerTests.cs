@@ -29,12 +29,12 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_Get_Should_Return_5_Review()
+        public async Task Review_Get_Should_Return_5_Review()
         {
             //Arrange In MockDependencies()
 
             //Act
-            var reviews = Controller.Get().Result;
+            var reviews = await Controller.Get();
             var response = (List<ReviewEntity>)((OkObjectResult)reviews).Value;
 
             //Assert
@@ -43,13 +43,13 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_GetById_Should_Return_Correct_Review_With_Id_1()
+        public async Task Review_GetById_Should_Return_Correct_Review_With_Id_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
 
             //Act
-            var review = Controller.GetById(id).Result;
+            var review = await Controller.GetById(id);
             var response = (ReviewEntity)((OkObjectResult)review).Value;
 
             //Assert
@@ -60,7 +60,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_Create_Should_Return_Review_With_Same_Id()
+        public async Task Review_Create_Should_Return_Review_With_Same_Id()
         {
             //Arrange
             var id = 8;
@@ -73,7 +73,7 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Create(review).Result;
+            var createResponse = await Controller.Create(review);
 
             //Assert
             Assert.IsNotNull(createResponse);
@@ -83,7 +83,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_Create_Should_Return_Review_No_Article_With_Provided_ArticleId_Validation_Error()
+        public async Task Review_Create_Should_Return_Review_No_Article_With_Provided_ArticleId_Validation_Error()
         {
             //Arrange
             var id = 8;
@@ -96,7 +96,7 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Create(review).Result;
+            var createResponse = await Controller.Create(review);
 
             //Assert
             Assert.IsNotNull(createResponse);
@@ -106,7 +106,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_Delete_Should_Return_True()
+        public async Task Review_Delete_Should_Return_True()
         {
             //Arrange
             var id = 1;
@@ -118,8 +118,8 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Create(review).Result;
-            var reviewDeleteResponse = Controller.Delete(id).Result;
+            await Controller.Create(review);
+            var reviewDeleteResponse = await Controller.Delete(id);
 
             //Assert
             Assert.IsNotNull(reviewDeleteResponse);
@@ -130,7 +130,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Review_Update_Should_Return_ReviewId_1()
+        public async Task Review_Update_Should_Return_ReviewId_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
@@ -142,7 +142,7 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Update(1, review).Result;
+            var createResponse = await Controller.Update(1, review);
 
             //Assert
             Assert.IsNotNull(createResponse);

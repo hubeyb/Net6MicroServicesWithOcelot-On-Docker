@@ -27,12 +27,12 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_Get_Should_Return_5_Article()
+        public async Task Article_Get_Should_Return_5_Article()
         {
             //Arrange In MockDependencies()
 
             //Act
-            var articles = Controller.Get().Result;
+            var articles = await Controller.Get();
             var response = (List<ArticleEntity>)((OkObjectResult)articles).Value;
 
             //Assert
@@ -41,13 +41,13 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_GetById_Should_Return_Correct_Article_With_Id_1()
+        public async Task Article_GetById_Should_Return_Correct_Article_With_Id_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
 
             //Act
-            var article = Controller.GetById(id).Result;
+            var article = await Controller.GetById(id);
             var response = (ArticleEntity)((OkObjectResult)article).Value;
 
             //Assert
@@ -59,7 +59,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_Create_Should_Return_Article_With_Same_Id()
+        public async Task Article_Create_Should_Return_Article_With_Same_Id()
         {
             //Arrange
             var id = 13;
@@ -81,7 +81,7 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Create(article).Result;
+            var createResponse = await Controller.Create(article);
 
             //Assert
             Assert.IsNotNull(createResponse);
@@ -91,13 +91,13 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_Delete_Should_Return_Has_Reviews_Validation_Error()
+        public async Task Article_Delete_Should_Return_Has_Reviews_Validation_Error()
         {
             //Arrange In MockDependencies()
             var id = 1;
 
             //Act
-            var articleDeleteResponse = Controller.Delete(id).Result;
+            var articleDeleteResponse = await Controller.Delete(id);
 
             //Assert
             Assert.IsNotNull(articleDeleteResponse);
@@ -108,7 +108,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_Delete_Should_Return_True()
+        public async Task Article_Delete_Should_Return_True()
         {
             //Arrange
             var id = 15;
@@ -123,8 +123,8 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Create(article).Result;
-            var articleDeleteResponse = Controller.Delete(id).Result;
+            await Controller.Create(article);
+            var articleDeleteResponse = await Controller.Delete(id);
 
             //Assert
             Assert.IsNotNull(articleDeleteResponse);
@@ -135,7 +135,7 @@ namespace KloiaCase.Tests.Controllers.V1
         }
 
         [TestMethod]
-        public void Article_Update_Should_Return_ArticleId_1()
+        public async Task Article_Update_Should_Return_ArticleId_1()
         {
             //Arrange In MockDependencies()
             var id = 1;
@@ -148,7 +148,7 @@ namespace KloiaCase.Tests.Controllers.V1
             };
 
             //Act
-            var createResponse = Controller.Update(1, article).Result;
+            var createResponse = await Controller.Update(1, article);
 
             //Assert
             Assert.IsNotNull(createResponse);
